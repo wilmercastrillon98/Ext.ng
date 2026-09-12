@@ -1,0 +1,21 @@
+<h2>Button</h2>
+<p>A basic push button with the <code>ui</code> variants supported by the theme.</p>
+
+<section class="example">
+  <h3>Variants</h3>
+  <div class="example__stage">
+    <ext-button text="Default" (click)="lastClicked.set('Default')" />
+    <ext-button text="Primary" ui="primary" (click)="lastClicked.set('Primary')" />
+    <ext-button text="Danger" ui="danger" (click)="lastClicked.set('Danger')" />
+  </div>
+</section>
+
+<section class="example">
+  <h3>Disabled</h3>
+  <div class="example__stage">
+    <ext-button text="Disabled" [disabled]="true" />
+    <ext-button text="Disabled primary" ui="primary" [disabled]="true" />
+  </div>
+</section>
+
+<p>Last clicked: <strong>{{ lastClicked() }}</strong></p>

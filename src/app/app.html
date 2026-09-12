@@ -1,0 +1,13 @@
+<aside class="sidebar">
+  <h1 class="sidebar__title">Ext.ng</h1>
+  <p class="sidebar__subtitle">Component Explorer</p>
+  <nav class="sidebar__nav">
+    @for (demo of demos; track demo.path) {
+      <a [routerLink]="demo.path" routerLinkActive="is-active">{{ demo.label }}</a>
+    }
+  </nav>
+</aside>
+
+<main class="content">
+  <router-outlet />
+</main>

@@ -1,0 +1,39 @@
+.ext-button {
+  border: 1px solid #b5bcc4;
+  border-radius: 3px;
+  padding: 0.35rem 0.9rem;
+  font: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+  background: linear-gradient(#fff, #e6eaee);
+  color: #24303d;
+}
+
+.ext-button:hover:not(:disabled) {
+  background: linear-gradient(#fff, #d5dce3);
+}
+
+.ext-button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.ext-button--primary {
+  border-color: #1a5c9c;
+  background: linear-gradient(#3892d4, #1a5c9c);
+  color: #fff;
+}
+
+.ext-button--primary:hover:not(:disabled) {
+  background: linear-gradient(#4fa3e3, #17538d);
+}
+
+.ext-button--danger {
+  border-color: #9c2a1a;
+  background: linear-gradient(#d45238, #9c2a1a);
+  color: #fff;
+}
+
+.ext-button--danger:hover:not(:disabled) {
+  background: linear-gradient(#e3654a, #8d2517);
+}
