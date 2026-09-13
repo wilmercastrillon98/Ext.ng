@@ -8,5 +8,9 @@ import { ExtButton } from '@ext-ng/core';
   templateUrl: './button-demo.html',
 })
 export class ButtonDemo {
-  protected readonly lastClicked = signal('(none)');
+  protected readonly message = signal('(nada)');
+  protected readonly hidden = signal(true);
+
+  /** An arrow property so `this` stays bound when it is passed to `Handler`. */
+  protected readonly login = () => this.message.set('login() ejecutado');
 }

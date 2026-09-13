@@ -1,8 +1,8 @@
 <button
   type="button"
   class="ext-button"
-  [class]="'ext-button--' + ui()"
-  [disabled]="disabled()"
+  [class]="'ext-button--' + UI().toLowerCase()"
+  (click)="onClick($event)"
 >
-  {{ text() }}
+  {{ Text() }}
 </button>

@@ -1,21 +1,31 @@
 <h2>Button</h2>
-<p>A basic push button with the <code>ui</code> variants supported by the theme.</p>
+<p>A push button configured through <code>Text</code>, <code>UI</code>, <code>Hidden</code> and <code>Handler</code>.</p>
 
 <section class="example">
-  <h3>Variants</h3>
+  <h3>UI</h3>
   <div class="example__stage">
-    <ext-button text="Default" (click)="lastClicked.set('Default')" />
-    <ext-button text="Primary" ui="primary" (click)="lastClicked.set('Primary')" />
-    <ext-button text="Danger" ui="danger" (click)="lastClicked.set('Danger')" />
+    <ext-button Text="Default" />
+    <ext-button Text="Danger" UI="Danger" />
+    <ext-button Text="Info" UI="Info" />
+    <ext-button Text="Primary" UI="Primary" />
+    <ext-button Text="Success" UI="Success" />
+    <ext-button Text="Warning" UI="Warning" />
   </div>
 </section>
 
 <section class="example">
-  <h3>Disabled</h3>
+  <h3>Handler</h3>
   <div class="example__stage">
-    <ext-button text="Disabled" [disabled]="true" />
-    <ext-button text="Disabled primary" ui="primary" [disabled]="true" />
+    <ext-button Text="Ingresar" UI="Primary" [Handler]="login" />
+    <ext-button Text="Limpiar" (click)="message.set('(nada)')" />
   </div>
+  <p>Resultado: <strong>{{ message() }}</strong></p>
 </section>
 
-<p>Last clicked: <strong>{{ lastClicked() }}</strong></p>
+<section class="example">
+  <h3>Hidden</h3>
+  <div class="example__stage">
+    <ext-button Text="Mostrar / ocultar" (click)="hidden.set(!hidden())" />
+    <ext-button Text="Puedo desaparecer" UI="Success" [Hidden]="hidden()" />
+  </div>
+</section>
