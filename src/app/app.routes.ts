@@ -9,6 +9,11 @@ export const demos: DemoRoute[] = [
     label: 'Button',
     loadComponent: () => import('./demos/button/button-demo').then((m) => m.ButtonDemo),
   },
+  {
+    path: 'label',
+    label: 'Label',
+    loadComponent: () => import('./demos/label/label-demo').then((m) => m.LabelDemo),
+  },
 ];
 
 export const routes: Routes = [

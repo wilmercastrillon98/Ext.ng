@@ -1,0 +1,37 @@
+<h2>Label</h2>
+<p>
+  A text label configured through <code>Text</code>, <code>Width</code>, <code>Height</code>,
+  <code>Margin</code>, <code>MarginSpec</code> and <code>Hidden</code>.
+</p>
+
+<section class="example">
+  <h3>Text</h3>
+  <div class="example__stage">
+    <ext-label Text="Mova web 1" />
+  </div>
+</section>
+
+<section class="example">
+  <h3>Width and Height</h3>
+  <div class="example__stage example__stage--outlined">
+    <ext-label Text="Mova web 1" Width="200" />
+    <ext-label Text="Mova web 2" Width="120" Height="48" />
+  </div>
+</section>
+
+<section class="example">
+  <h3>Margin and MarginSpec</h3>
+  <div class="example__stage example__stage--outlined">
+    <ext-label Text="Margin 16" Margin="16" />
+    <ext-label Text="MarginSpec 5 5 5 5" MarginSpec="5 5 5 5" />
+    <ext-label Text="MarginSpec 0 40 0 0" MarginSpec="0 40 0 0" />
+  </div>
+</section>
+
+<section class="example">
+  <h3>Hidden</h3>
+  <div class="example__stage">
+    <ext-button Text="Mostrar / ocultar" (click)="hidden.set(!hidden())" />
+    <ext-label Text="Puedo desaparecer" [Hidden]="hidden()" />
+  </div>
+</section>

@@ -1,0 +1,19 @@
+.example {
+  margin-bottom: 1.5rem;
+}
+
+.example__stage {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 1rem;
+  border: 1px solid #d5dce3;
+  border-radius: 4px;
+  background: #f7f9fa;
+}
+
+/* Outlines each label so its width, height and margin are visible. */
+.example__stage--outlined ext-label {
+  outline: 1px dashed #9aa7b4;
+}
