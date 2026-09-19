@@ -14,6 +14,11 @@ export const demos: DemoRoute[] = [
     label: 'Label',
     loadComponent: () => import('./demos/label/label-demo').then((m) => m.LabelDemo),
   },
+  {
+    path: 'text-field',
+    label: 'TextField',
+    loadComponent: () => import('./demos/text-field/text-field-demo').then((m) => m.TextFieldDemo),
+  },
 ];
 
 export const routes: Routes = [

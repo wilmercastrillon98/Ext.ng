@@ -1,0 +1,72 @@
+:host {
+  display: inline-flex;
+  align-items: stretch;
+}
+
+:host(.ext-textfield--right) {
+  flex-direction: row-reverse;
+}
+
+:host(.ext-textfield--top) {
+  flex-direction: column;
+}
+
+:host(.ext-textfield--disabled) {
+  opacity: 0.5;
+}
+
+.ext-textfield__label {
+  flex: none;
+  color: #666;
+  font:
+    300 13px / 17px helvetica,
+    arial,
+    verdana,
+    sans-serif;
+  min-height: 24px;
+  padding-top: 4px;
+  padding-right: 5px;
+}
+
+:host(.ext-textfield--right) .ext-textfield__label {
+  padding-right: 0;
+  padding-left: 5px;
+}
+
+:host(.ext-textfield--top) .ext-textfield__label {
+  padding-right: 0;
+  min-height: 0;
+}
+
+.ext-textfield__input {
+  flex: 1;
+  min-width: 0;
+  color: black;
+  padding: 3px 6px 2px 6px;
+  background-color: white;
+  font:
+    300 13px / 17px helvetica,
+    arial,
+    verdana,
+    sans-serif;
+  min-height: 22px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #cecece;
+  border-radius: 0;
+}
+
+:host(.ext-textfield--top) .ext-textfield__input {
+  flex: 1 1 auto;
+}
+
+.ext-textfield__input::placeholder {
+  color: #999;
+  opacity: 1;
+}
+
+.ext-textfield__input:disabled {
+  color: black;
+  background-color: white;
+  -webkit-text-fill-color: currentColor;
+}

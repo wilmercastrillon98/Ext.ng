@@ -1,10 +1,5 @@
-import { booleanAttribute, Component, computed, input, numberAttribute } from '@angular/core';
-
-/** Reads a numeric attribute, discarding anything that is not a finite number. */
-function pixelAttribute(value: unknown): number | undefined {
-  const pixels = numberAttribute(value);
-  return Number.isFinite(pixels) ? pixels : undefined;
-}
+import { booleanAttribute, Component, computed, input } from '@angular/core';
+import { marginStyle, numericAttribute } from '../attributes';
 
 @Component({
   selector: 'ext-label',
@@ -19,20 +14,11 @@ function pixelAttribute(value: unknown): number | undefined {
 })
 export class ExtLabel {
   readonly Text = input('');
-  readonly Width = input<number | undefined, unknown>(undefined, { transform: pixelAttribute });
-  readonly Height = input<number | undefined, unknown>(undefined, { transform: pixelAttribute });
-  readonly Margin = input<number | undefined, unknown>(undefined, { transform: pixelAttribute });
+  readonly Width = input<number | undefined, unknown>(undefined, { transform: numericAttribute });
+  readonly Height = input<number | undefined, unknown>(undefined, { transform: numericAttribute });
+  readonly Margin = input<number | undefined, unknown>(undefined, { transform: numericAttribute });
   readonly MarginSpec = input('');
   readonly Hidden = input(false, { transform: booleanAttribute });
 
-  /** `MarginSpec` takes precedence over `Margin`; both become a CSS `margin` shorthand. */
-  protected readonly margin = computed(() => {
-    const spec = this.MarginSpec().trim().split(/\s+/).filter(Boolean).map(Number);
-    if (spec.length > 0 && spec.every(Number.isFinite)) {
-      return spec.map((pixels) => `${pixels}px`).join(' ');
-    }
-
-    const margin = this.Margin();
-    return margin === undefined ? null : `${margin}px`;
-  });
+  protected readonly margin = computed(() => marginStyle(this.MarginSpec(), this.Margin()));
 }

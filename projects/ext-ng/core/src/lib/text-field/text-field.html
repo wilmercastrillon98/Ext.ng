@@ -1,0 +1,15 @@
+@if (showLabel()) {
+  <label class="ext-textfield__label" [for]="inputId" [style.width.px]="labelWidth()">
+    {{ FieldLabel() }}
+  </label>
+}
+
+<input
+  type="text"
+  class="ext-textfield__input"
+  [id]="inputId"
+  [disabled]="Disabled()"
+  [readOnly]="ReadOnly()"
+  [placeholder]="EmptyText()"
+  (input)="onInput($event)"
+/>
