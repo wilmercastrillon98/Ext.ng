@@ -11,10 +11,6 @@
   flex-direction: column;
 }
 
-:host(.ext-textfield--disabled) {
-  opacity: 0.5;
-}
-
 .ext-textfield__label {
   flex: none;
   color: #666;

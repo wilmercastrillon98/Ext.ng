@@ -1,4 +1,5 @@
-import { booleanAttribute, Component, input } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { ComponentBase } from '../component-base';
 
 export type ExtButtonUI = 'Default' | 'Danger' | 'Info' | 'Primary' | 'Success' | 'Warning';
 
@@ -6,12 +7,10 @@ export type ExtButtonUI = 'Default' | 'Danger' | 'Info' | 'Primary' | 'Success' 
   selector: 'ext-button',
   styleUrl: './button.css',
   templateUrl: './button.html',
-  host: { '[style.display]': 'Hidden() ? "none" : null' },
 })
-export class ExtButton {
+export class ExtButton extends ComponentBase {
   readonly Text = input('');
   readonly UI = input<ExtButtonUI>('Default');
-  readonly Hidden = input(false, { transform: booleanAttribute });
   readonly Handler = input<(event: MouseEvent) => void>();
 
   protected onClick(event: MouseEvent): void {

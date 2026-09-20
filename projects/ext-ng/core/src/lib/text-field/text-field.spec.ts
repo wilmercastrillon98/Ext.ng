@@ -78,40 +78,12 @@ describe('ExtTextField', () => {
     expect((fixture.nativeElement as HTMLElement).classList).toContain('ext-textfield--right');
   });
 
-  it('should apply Margin and let MarginSpec win', async () => {
-    const fixture = TestBed.createComponent(ExtTextField);
-    fixture.componentRef.setInput('Margin', 8);
-    await fixture.whenStable();
-    expect((fixture.nativeElement as HTMLElement).style.margin).toBe('8px');
-
-    fixture.componentRef.setInput('MarginSpec', '1 2 3 4');
-    await fixture.whenStable();
-    expect((fixture.nativeElement as HTMLElement).style.margin).toBe('1px 2px 3px 4px');
-  });
-
-  it('should take no space when hidden', async () => {
-    const fixture = TestBed.createComponent(ExtTextField);
-    fixture.componentRef.setInput('Hidden', true);
-    await fixture.whenStable();
-
-    expect((fixture.nativeElement as HTMLElement).style.display).toBe('none');
-  });
-
-  it('should treat the string "false" as not hidden', async () => {
-    const fixture = TestBed.createComponent(ExtTextField);
-    fixture.componentRef.setInput('Hidden', 'false');
-    await fixture.whenStable();
-
-    expect((fixture.nativeElement as HTMLElement).style.display).toBe('');
-  });
-
-  it('should disable the text box and dim the component', async () => {
+  it('should disable the text box', async () => {
     const fixture = TestBed.createComponent(ExtTextField);
     fixture.componentRef.setInput('Disabled', true);
     await fixture.whenStable();
 
     expect(inputOf(fixture).disabled).toBe(true);
-    expect((fixture.nativeElement as HTMLElement).classList).toContain('ext-textfield--disabled');
   });
 
   it('should show EmptyText as the placeholder', async () => {

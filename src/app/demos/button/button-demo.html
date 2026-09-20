@@ -1,5 +1,9 @@
 <h2>Button</h2>
-<p>A push button configured through <code>Text</code>, <code>UI</code>, <code>Hidden</code> and <code>Handler</code>.</p>
+<p>
+  A push button configured through <code>Text</code>, <code>UI</code>, <code>Handler</code> and the
+  shared <code>Width</code>, <code>Height</code>, <code>Margin</code>, <code>MarginSpec</code>,
+  <code>Hidden</code> and <code>Disabled</code>.
+</p>
 
 <section class="example">
   <h3>UI</h3>
@@ -19,7 +23,32 @@
     <ext-button Text="Ingresar" UI="Primary" [Handler]="login" />
     <ext-button Text="Limpiar" (click)="message.set('(nada)')" />
   </div>
-  <p>Resultado: <strong>{{ message() }}</strong></p>
+  <p>
+    Resultado: <strong>{{ message() }}</strong>
+  </p>
+</section>
+
+<section class="example">
+  <h3>Width and Height</h3>
+  <div class="example__stage example__stage--outlined">
+    <ext-button Text="Ancho 200" Width="200" />
+    <ext-button Text="Alto 60" UI="Info" Height="60" />
+  </div>
+</section>
+
+<section class="example">
+  <h3>Margin and MarginSpec</h3>
+  <div class="example__stage example__stage--outlined">
+    <ext-button Text="Margin 16" Margin="16" />
+    <ext-button Text="MarginSpec 0 40 0 0" MarginSpec="0 40 0 0" />
+  </div>
+</section>
+
+<section class="example">
+  <h3>Disabled</h3>
+  <div class="example__stage">
+    <ext-button Text="No se puede usar" UI="Primary" Disabled="true" [Handler]="login" />
+  </div>
 </section>
 
 <section class="example">

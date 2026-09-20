@@ -12,3 +12,8 @@
   border-radius: 4px;
   background: #f7f9fa;
 }
+
+/* Outlines each button so its width, height and margin are visible. */
+.example__stage--outlined ext-button {
+  outline: 1px dashed #9aa7b4;
+}

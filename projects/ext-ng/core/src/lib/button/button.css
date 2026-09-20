@@ -1,58 +1,87 @@
-.ext-button {
-  --ext-button-top: #ffffff;
-  --ext-button-bottom: #e6eaee;
-  --ext-button-border: #b5bcc4;
-  --ext-button-color: #24303d;
+:host {
+  display: inline-flex;
+  align-items: stretch;
+}
 
-  border: 1px solid var(--ext-button-border);
+.ext-button {
+  flex: 1;
+  min-width: 0;
   border-radius: 3px;
-  padding: 0.35rem 0.9rem;
+  padding: 3px 3px 3px 3px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--ext-button-border);
+  background-color: var(--ext-button-background);
+  color: #ffffff;
   font: inherit;
   font-size: 0.875rem;
   cursor: pointer;
-  background: linear-gradient(var(--ext-button-top), var(--ext-button-bottom));
-  color: var(--ext-button-color);
 }
 
-.ext-button:hover {
-  filter: brightness(0.94);
+.ext-button:enabled:hover {
+  border-color: var(--ext-button-border-hover);
+  background-color: var(--ext-button-background-hover);
 }
 
-.ext-button:active {
-  filter: brightness(0.88);
+.ext-button:enabled:active {
+  border-color: var(--ext-button-border-active);
+  background-color: var(--ext-button-background-active);
 }
 
-.ext-button--primary {
-  --ext-button-top: #3892d4;
-  --ext-button-bottom: #1a5c9c;
-  --ext-button-border: #17538d;
-  --ext-button-color: #ffffff;
+.ext-button:disabled {
+  cursor: default;
+}
+
+.ext-button--default {
+  --ext-button-border: #157fcc;
+  --ext-button-background: #3892d3;
+  --ext-button-border-hover: #1374bb;
+  --ext-button-background-hover: #3386c2;
+  --ext-button-border-active: #0f5f99;
+  --ext-button-background-active: #2a6d9e;
 }
 
 .ext-button--danger {
-  --ext-button-top: #d45238;
-  --ext-button-bottom: #9c2a1a;
-  --ext-button-border: #8d2517;
-  --ext-button-color: #ffffff;
+  --ext-button-border: #a82824;
+  --ext-button-background: #d9534f;
+  --ext-button-border-hover: #a82824;
+  --ext-button-background-hover: #d9534f;
+  --ext-button-border-active: #95342d;
+  --ext-button-background-active: #a23e3b;
 }
 
 .ext-button--info {
-  --ext-button-top: #45b6cd;
-  --ext-button-bottom: #1d7f93;
-  --ext-button-border: #197183;
-  --ext-button-color: #ffffff;
+  --ext-button-border: #1b6d85;
+  --ext-button-background: #2aabd2;
+  --ext-button-border-hover: #335b73;
+  --ext-button-background-hover: #269dc1;
+  --ext-button-border-active: #156c8c;
+  --ext-button-background-active: #1f809d;
+}
+
+.ext-button--primary {
+  --ext-button-border: #275c89;
+  --ext-button-background: #428bca;
+  --ext-button-border-hover: #46566e;
+  --ext-button-background-hover: #3c7fb9;
+  --ext-button-border-active: #255778;
+  --ext-button-background-active: #316897;
 }
 
 .ext-button--success {
-  --ext-button-top: #58b75c;
-  --ext-button-bottom: #2e7d32;
-  --ext-button-border: #286e2c;
-  --ext-button-color: #ffffff;
+  --ext-button-border: #388038;
+  --ext-button-background: #5cb85c;
+  --ext-button-border-hover: #59635a;
+  --ext-button-background-hover: #54a954;
+  --ext-button-border-active: #367e39;
+  --ext-button-background-active: #458a45;
 }
 
 .ext-button--warning {
-  --ext-button-top: #f5b74f;
-  --ext-button-bottom: #cf8811;
-  --ext-button-border: #b8790f;
-  --ext-button-color: #3a2600;
+  --ext-button-border: #d08112;
+  --ext-button-background: #f0ad4e;
+  --ext-button-border-hover: #9e8544;
+  --ext-button-background-hover: #dc9f47;
+  --ext-button-border-active: #a7782c;
+  --ext-button-background-active: #b4813a;
 }

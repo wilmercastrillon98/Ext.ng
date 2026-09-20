@@ -21,20 +21,32 @@ describe('ExtButton', () => {
     expect(button.classList).toContain('ext-button--default');
   });
 
-  it('should take no space when hidden', async () => {
+  it('should leave Width unset by default', async () => {
     const fixture = TestBed.createComponent(ExtButton);
-    fixture.componentRef.setInput('Hidden', true);
     await fixture.whenStable();
 
-    expect((fixture.nativeElement as HTMLElement).style.display).toBe('none');
+    expect((fixture.nativeElement as HTMLElement).style.width).toBe('');
   });
 
-  it('should treat the string "false" as not hidden', async () => {
+  it('should disable the native button', async () => {
     const fixture = TestBed.createComponent(ExtButton);
-    fixture.componentRef.setInput('Hidden', 'false');
+    fixture.componentRef.setInput('Disabled', true);
     await fixture.whenStable();
 
-    expect((fixture.nativeElement as HTMLElement).style.display).toBe('');
+    expect((fixture.nativeElement.querySelector('button') as HTMLButtonElement).disabled).toBe(
+      true,
+    );
+  });
+
+  it('should not invoke the handler while disabled', async () => {
+    const fixture = TestBed.createComponent(ExtButton);
+    let clicks = 0;
+    fixture.componentRef.setInput('Handler', () => clicks++);
+    fixture.componentRef.setInput('Disabled', true);
+    await fixture.whenStable();
+
+    (fixture.nativeElement.querySelector('button') as HTMLButtonElement).click();
+    expect(clicks).toBe(0);
   });
 
   it('should invoke the handler on click', async () => {

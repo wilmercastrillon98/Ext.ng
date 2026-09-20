@@ -2,6 +2,7 @@
   type="button"
   class="ext-button"
   [class]="'ext-button--' + UI().toLowerCase()"
+  [disabled]="Disabled()"
   (click)="onClick($event)"
 >
   {{ Text() }}

@@ -7,11 +7,11 @@ export function numericAttribute(value: unknown): number | undefined {
 }
 
 /** `MarginSpec` takes precedence over `Margin`; both become a CSS `margin` shorthand. */
-export function marginStyle(marginSpec: string, margin: number | undefined): string | null {
+export function marginStyle(marginSpec: string, margin: number): string {
   const spec = marginSpec.trim().split(/\s+/).filter(Boolean).map(Number);
   if (spec.length > 0 && spec.every(Number.isFinite)) {
     return spec.map((pixels) => `${pixels}px`).join(' ');
   }
 
-  return margin === undefined ? null : `${margin}px`;
+  return `${margin}px`;
 }
