@@ -1,5 +1,5 @@
 import { booleanAttribute, computed, Directive, input, Signal } from '@angular/core';
-import { marginStyle, numericAttribute } from './attributes';
+import { numericAttribute, spacingStyle } from './attributes';
 
 /**
  * Layout and state configuration shared by every Ext.ng component. It is an abstract
@@ -11,6 +11,7 @@ import { marginStyle, numericAttribute } from './attributes';
     '[style.width.px]': 'hostWidth()',
     '[style.height.px]': 'Height()',
     '[style.margin]': 'hostMargin()',
+    '[style.padding]': 'hostPadding()',
     '[style.opacity]': 'Disabled() ? 0.5 : null',
   },
 })
@@ -25,6 +26,12 @@ export abstract class ComponentBase {
   });
   /** Top, right, bottom and left margins in pixels, separated by spaces. Wins over `Margin`. */
   readonly MarginSpec = input('');
+  /** Padding applied to the four sides, in pixels. */
+  readonly Padding = input<number, unknown>(0, {
+    transform: (value) => numericAttribute(value) ?? 0,
+  });
+  /** Top, right, bottom and left padding in pixels, separated by spaces. Wins over `Padding`. */
+  readonly PaddingSpec = input('');
   /** Hides the component without leaving any space behind. */
   readonly Hidden = input(false, { transform: booleanAttribute });
   /** Dims the component and stops it from being used. */
@@ -33,5 +40,7 @@ export abstract class ComponentBase {
   /** Override to give a component a default width of its own. */
   protected readonly hostWidth: Signal<number | undefined> = computed(() => this.Width());
 
-  protected readonly hostMargin = computed(() => marginStyle(this.MarginSpec(), this.Margin()));
+  protected readonly hostMargin = computed(() => spacingStyle(this.MarginSpec(), this.Margin()));
+
+  protected readonly hostPadding = computed(() => spacingStyle(this.PaddingSpec(), this.Padding()));
 }

@@ -1,0 +1,92 @@
+<h2>NumberField</h2>
+<p>
+  A text box for numbers with a spinner inside its border. It shares the label and validation
+  options of every field — <code>FieldLabel</code>, <code>LabelAlign</code>,
+  <code>LabelWidth</code>, <code>EmptyText</code>, <code>ReadOnly</code>, <code>AllowBlank</code>,
+  <code>MaxLength</code>, <code>MinLength</code>, <code>EnforceMaxLength</code> — and adds
+  <code>Editable</code>, <code>MinValue</code>, <code>MaxValue</code> and <code>HideTrigger</code>.
+</p>
+
+<section class="example">
+  <h3>Spinner</h3>
+  <p>
+    The arrows add and subtract 1. While the field is empty the up arrow writes <code>1</code> and
+    the down arrow <code>-1</code>.
+  </p>
+  <div class="example__stage">
+    <ext-numberField EmptyText="No label" />
+    <ext-numberField FieldLabel="Amount" EmptyText="Empty" />
+  </div>
+</section>
+
+<section class="example">
+  <h3>LabelAlign</h3>
+  <div class="example__stage">
+    <ext-numberField FieldLabel="Left" LabelAlign="Left" EmptyText="Label on the left" />
+    <ext-numberField FieldLabel="Right" LabelAlign="Right" EmptyText="Label on the right" />
+    <ext-numberField FieldLabel="Top" LabelAlign="Top" EmptyText="Label on top" />
+  </div>
+</section>
+
+<section class="example">
+  <h3>Width, LabelWidth and Height</h3>
+  <div class="example__stage">
+    <ext-numberField FieldLabel="Width 400" Width="400" LabelWidth="80" />
+    <ext-numberField FieldLabel="Height 60" Height="60" />
+  </div>
+</section>
+
+<section class="example">
+  <h3>Margin, MarginSpec, Padding and PaddingSpec</h3>
+  <div class="example__stage example__stage--outlined">
+    <ext-numberField EmptyText="Margin 16" Margin="16" />
+    <ext-numberField EmptyText="MarginSpec 0 40 0 0" MarginSpec="0 40 0 0" />
+    <ext-numberField EmptyText="Padding 12" Padding="12" />
+    <ext-numberField EmptyText="PaddingSpec 0 24 0 0" PaddingSpec="0 24 0 0" />
+  </div>
+</section>
+
+<section class="example">
+  <h3>ReadOnly, Editable and HideTrigger</h3>
+  <p>
+    <code>ReadOnly</code> hides the spinner and locks the keyboard,
+    <code>Editable="false"</code> locks only the keyboard, and <code>HideTrigger</code> hides only
+    the spinner.
+  </p>
+  <div class="example__stage">
+    <ext-numberField FieldLabel="Disabled" Disabled="true" EmptyText="Cannot be used" />
+    <ext-numberField FieldLabel="ReadOnly" ReadOnly="true" EmptyText="Read only" />
+    <ext-numberField FieldLabel="Editable" Editable="false" EmptyText="Spinner only" />
+    <ext-numberField FieldLabel="HideTrigger" HideTrigger="true" EmptyText="No spinner" />
+  </div>
+</section>
+
+<section class="example">
+  <h3>Hidden</h3>
+  <div class="example__stage">
+    <ext-button Text="Show / hide" (click)="hidden.set(!hidden())" />
+    <ext-numberField EmptyText="I can disappear" [Hidden]="hidden()" />
+  </div>
+</section>
+
+<section class="example">
+  <h3>MinValue, MaxValue and isValid()</h3>
+  <p>
+    Valid between 1 and 10. The spinner never steps past those limits, but a value out of range can
+    still be typed: it only makes the field invalid.
+  </p>
+  <div class="example__stage">
+    <ext-numberField
+      #validated
+      FieldLabel="Amount"
+      EmptyText="1 to 10"
+      MinValue="1"
+      MaxValue="10"
+      AllowBlank="false"
+    />
+    <ext-button Text="Validate" UI="Primary" (click)="check()" />
+  </div>
+  <p>
+    Result: <strong>{{ validation() }}</strong>
+  </p>
+</section>

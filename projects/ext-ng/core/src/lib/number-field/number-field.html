@@ -1,0 +1,41 @@
+@if (showLabel()) {
+  <label class="ext-field__label" [for]="inputId" [style.width.px]="labelWidth()">
+    {{ FieldLabel() }}
+  </label>
+}
+
+<div class="ext-numberfield__box">
+  <input
+    #input
+    type="text"
+    inputmode="decimal"
+    class="ext-numberfield__input"
+    [id]="inputId"
+    [disabled]="Disabled()"
+    [readOnly]="ReadOnly() || !Editable()"
+    [placeholder]="EmptyText()"
+    (input)="onInput($event)"
+  />
+
+  @if (showTrigger()) {
+    <!-- Swallowing mousedown keeps the caret in the text box while the arrows are clicked. -->
+    <span class="ext-numberfield__spinner" (mousedown)="$event.preventDefault()">
+      <button
+        type="button"
+        class="ext-numberfield__trigger ext-numberfield__trigger--up"
+        tabindex="-1"
+        aria-label="+1"
+        [disabled]="Disabled()"
+        (click)="step(1)"
+      ></button>
+      <button
+        type="button"
+        class="ext-numberfield__trigger ext-numberfield__trigger--down"
+        tabindex="-1"
+        aria-label="-1"
+        [disabled]="Disabled()"
+        (click)="step(-1)"
+      ></button>
+    </span>
+  }
+</div>

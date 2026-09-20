@@ -1,0 +1,88 @@
+.ext-numberfield__box {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: stretch;
+  background-color: white;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #cecece;
+}
+
+:host(.ext-field--top) .ext-numberfield__box {
+  flex: 1 1 auto;
+}
+
+.ext-numberfield__input {
+  flex: 1;
+  min-width: 0;
+  color: black;
+  padding: 3px 6px 2px 6px;
+  background-color: transparent;
+  font:
+    300 13px / 17px helvetica,
+    arial,
+    verdana,
+    sans-serif;
+  min-height: 22px;
+  border: 0;
+  outline-offset: -2px;
+}
+
+.ext-numberfield__input::placeholder {
+  color: #999;
+  opacity: 1;
+}
+
+.ext-numberfield__input:disabled {
+  color: black;
+  -webkit-text-fill-color: currentColor;
+}
+
+.ext-numberfield__spinner {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  width: 17px;
+}
+
+.ext-numberfield__trigger {
+  flex: 1;
+  position: relative;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.ext-numberfield__trigger:disabled {
+  cursor: default;
+}
+
+/* The arrows are CSS triangles centred inside each half of the spinner. */
+.ext-numberfield__trigger::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+}
+
+.ext-numberfield__trigger--up::before {
+  border-bottom: 4px solid #666;
+}
+
+.ext-numberfield__trigger--down::before {
+  border-top: 4px solid #666;
+}
+
+.ext-numberfield__trigger--up:enabled:hover::before {
+  border-bottom-color: #333;
+}
+
+.ext-numberfield__trigger--down:enabled:hover::before {
+  border-top-color: #333;
+}

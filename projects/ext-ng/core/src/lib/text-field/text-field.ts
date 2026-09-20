@@ -1,58 +1,14 @@
-import { booleanAttribute, Component, computed, input, signal } from '@angular/core';
-import { numericAttribute } from '../attributes';
-import { ComponentBase } from '../component-base';
-
-export type ExtTextFieldLabelAlign = 'Left' | 'Right' | 'Top';
-
-const DEFAULT_BOX_WIDTH = 170;
-
-let nextId = 0;
+import { Component, computed, input } from '@angular/core';
+import { Field } from '../field/field';
 
 @Component({
   selector: 'ext-textField',
-  styleUrl: './text-field.css',
+  styleUrls: ['../field/field.css', './text-field.css'],
   templateUrl: './text-field.html',
-  host: {
-    '[class.ext-textfield--right]': 'LabelAlign() === "Right"',
-    '[class.ext-textfield--top]': 'LabelAlign() === "Top"',
-  },
 })
-export class ExtTextField extends ComponentBase {
-  readonly MaxLength = input<number | undefined, unknown>(undefined, {
-    transform: numericAttribute,
-  });
-  readonly MinLength = input<number | undefined, unknown>(undefined, {
-    transform: numericAttribute,
-  });
-  readonly AllowBlank = input(true, { transform: booleanAttribute });
+export class ExtTextField extends Field {
+  /** Expression every single character has to match. Others are dropped as they are typed. */
   readonly MaskRe = input('');
-
-  readonly FieldLabel = input('');
-  readonly LabelAlign = input<ExtTextFieldLabelAlign>('Left');
-  readonly LabelWidth = input<number, unknown>(100, {
-    transform: (value) => numericAttribute(value) ?? 100,
-  });
-  readonly EmptyText = input('');
-  readonly ReadOnly = input(false, { transform: booleanAttribute });
-
-  readonly value = signal('');
-
-  protected readonly inputId = `ext-textfield-${nextId++}`;
-  protected readonly showLabel = computed(() => this.FieldLabel().length > 0);
-
-  protected override readonly hostWidth = computed(() => {
-    const width = this.Width();
-    if (width !== undefined) {
-      return width;
-    }
-
-    const takesRow = this.showLabel() && this.LabelAlign() !== 'Top';
-    return takesRow ? DEFAULT_BOX_WIDTH + this.LabelWidth() : DEFAULT_BOX_WIDTH;
-  });
-
-  protected readonly labelWidth = computed(() =>
-    this.LabelAlign() === 'Top' ? null : this.LabelWidth(),
-  );
 
   private readonly maskRe = computed(() => {
     const source = this.MaskRe();
@@ -67,37 +23,13 @@ export class ExtTextField extends ComponentBase {
     }
   });
 
-  isValid(): boolean {
-    const value = this.value();
-    if (value === '') {
-      return this.AllowBlank();
-    }
-
-    const maxLength = this.MaxLength();
-    if (maxLength !== undefined && value.length > maxLength) {
-      return false;
-    }
-
-    const minLength = this.MinLength();
-    if (minLength !== undefined && value.length < minLength) {
-      return false;
-    }
-
-    return this.matchesMask(value);
+  override isValid(): boolean {
+    return super.isValid() && this.matchesMask(this.value());
   }
 
   protected onInput(event: Event): void {
     const element = event.target as HTMLInputElement;
-    const typed = element.value;
-    const masked = this.applyMask(typed);
-
-    if (masked !== typed) {
-      const caret = (element.selectionStart ?? typed.length) - (typed.length - masked.length);
-      element.value = masked;
-      element.setSelectionRange(caret, caret);
-    }
-
-    this.value.set(masked);
+    this.commit(element, this.enforceMaxLength(this.applyMask(element.value)));
   }
 
   private applyMask(text: string): string {

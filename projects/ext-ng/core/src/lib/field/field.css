@@ -1,0 +1,35 @@
+:host {
+  display: inline-flex;
+  align-items: stretch;
+}
+
+:host(.ext-field--right) {
+  flex-direction: row-reverse;
+}
+
+:host(.ext-field--top) {
+  flex-direction: column;
+}
+
+.ext-field__label {
+  flex: none;
+  color: #666;
+  font:
+    300 13px / 17px helvetica,
+    arial,
+    verdana,
+    sans-serif;
+  min-height: 24px;
+  padding-top: 4px;
+  padding-right: 5px;
+}
+
+:host(.ext-field--right) .ext-field__label {
+  padding-right: 0;
+  padding-left: 5px;
+}
+
+:host(.ext-field--top) .ext-field__label {
+  padding-right: 0;
+  min-height: 0;
+}

@@ -15,6 +15,12 @@ export const demos: DemoRoute[] = [
     loadComponent: () => import('./demos/label/label-demo').then((m) => m.LabelDemo),
   },
   {
+    path: 'number-field',
+    label: 'NumberField',
+    loadComponent: () =>
+      import('./demos/number-field/number-field-demo').then((m) => m.NumberFieldDemo),
+  },
+  {
     path: 'text-field',
     label: 'TextField',
     loadComponent: () => import('./demos/text-field/text-field-demo').then((m) => m.TextFieldDemo),

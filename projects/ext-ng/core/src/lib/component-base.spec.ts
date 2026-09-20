@@ -3,12 +3,14 @@ import { TestBed } from '@angular/core/testing';
 import { ExtButton } from './button/button';
 import { ComponentBase } from './component-base';
 import { ExtLabel } from './label/label';
+import { ExtNumberField } from './number-field/number-field';
 import { ExtTextField } from './text-field/text-field';
 
 const components: [string, Type<ComponentBase>][] = [
   ['ExtButton', ExtButton],
   ['ExtLabel', ExtLabel],
   ['ExtTextField', ExtTextField],
+  ['ExtNumberField', ExtNumberField],
 ];
 
 describe.each(components)('ComponentBase on %s', (_name, component) => {
@@ -34,6 +36,7 @@ describe.each(components)('ComponentBase on %s', (_name, component) => {
 
     expect(host.style.height).toBe('');
     expect(host.style.margin).toBe('0px');
+    expect(host.style.padding).toBe('0px');
     expect(host.style.display).toBe('');
     expect(host.style.opacity).toBe('');
   });
@@ -57,6 +60,22 @@ describe.each(components)('ComponentBase on %s', (_name, component) => {
 
   it('should fall back to no margin when Margin is not numeric', async () => {
     expect((await render({ Margin: 'auto' })).style.margin).toBe('0px');
+  });
+
+  it('should apply Padding to the four sides', async () => {
+    expect((await render({ Padding: '8' })).style.padding).toBe('8px');
+  });
+
+  it('should apply PaddingSpec as top right bottom left', async () => {
+    expect((await render({ PaddingSpec: '1 2 3 4' })).style.padding).toBe('1px 2px 3px 4px');
+  });
+
+  it('should let PaddingSpec win over Padding', async () => {
+    expect((await render({ Padding: 8, PaddingSpec: '5 5 5 5' })).style.padding).toBe('5px');
+  });
+
+  it('should ignore a PaddingSpec that is not numeric', async () => {
+    expect((await render({ Padding: 8, PaddingSpec: 'auto auto' })).style.padding).toBe('8px');
   });
 
   it('should take no space when hidden', async () => {

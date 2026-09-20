@@ -6,12 +6,12 @@ export function numericAttribute(value: unknown): number | undefined {
   return Number.isFinite(parsed) ? parsed : undefined;
 }
 
-/** `MarginSpec` takes precedence over `Margin`; both become a CSS `margin` shorthand. */
-export function marginStyle(marginSpec: string, margin: number): string {
-  const spec = marginSpec.trim().split(/\s+/).filter(Boolean).map(Number);
-  if (spec.length > 0 && spec.every(Number.isFinite)) {
-    return spec.map((pixels) => `${pixels}px`).join(' ');
+/** The `*Spec` form takes precedence over the single value; both become a CSS shorthand. */
+export function spacingStyle(spec: string, value: number): string {
+  const sides = spec.trim().split(/\s+/).filter(Boolean).map(Number);
+  if (sides.length > 0 && sides.every(Number.isFinite)) {
+    return sides.map((pixels) => `${pixels}px`).join(' ');
   }
 
-  return `${margin}px`;
+  return `${value}px`;
 }
