@@ -9,25 +9,25 @@
 <section class="example">
   <h3>FieldLabel and EmptyText</h3>
   <div class="example__stage">
-    <ext-textField EmptyText="Sin label" />
-    <ext-textField FieldLabel="test" EmptyText="Vacio" />
+    <ext-textField EmptyText="No label" />
+    <ext-textField FieldLabel="Name" EmptyText="Empty" />
   </div>
 </section>
 
 <section class="example">
   <h3>LabelAlign</h3>
   <div class="example__stage">
-    <ext-textField FieldLabel="Left" LabelAlign="Left" EmptyText="Izquierda" />
-    <ext-textField FieldLabel="Right" LabelAlign="Right" EmptyText="Derecha" />
-    <ext-textField FieldLabel="Top" LabelAlign="Top" EmptyText="Arriba" />
+    <ext-textField FieldLabel="Left" LabelAlign="Left" EmptyText="Label on the left" />
+    <ext-textField FieldLabel="Right" LabelAlign="Right" EmptyText="Label on the right" />
+    <ext-textField FieldLabel="Top" LabelAlign="Top" EmptyText="Label on top" />
   </div>
 </section>
 
 <section class="example">
   <h3>Width, LabelWidth and Height</h3>
   <div class="example__stage">
-    <ext-textField FieldLabel="Ancho 400" Width="400" LabelWidth="80" />
-    <ext-textField FieldLabel="Alto 60" Height="60" />
+    <ext-textField FieldLabel="Width 400" Width="400" LabelWidth="80" />
+    <ext-textField FieldLabel="Height 60" Height="60" />
   </div>
 </section>
 
@@ -42,38 +42,38 @@
 <section class="example">
   <h3>Disabled and ReadOnly</h3>
   <div class="example__stage">
-    <ext-textField FieldLabel="Disabled" Disabled="true" EmptyText="No se puede usar" />
-    <ext-textField FieldLabel="ReadOnly" ReadOnly="true" EmptyText="Solo lectura" />
+    <ext-textField FieldLabel="Disabled" Disabled="true" EmptyText="Cannot be used" />
+    <ext-textField FieldLabel="ReadOnly" ReadOnly="true" EmptyText="Read only" />
   </div>
 </section>
 
 <section class="example">
   <h3>Hidden</h3>
   <div class="example__stage">
-    <ext-button Text="Mostrar / ocultar" (click)="hidden.set(!hidden())" />
-    <ext-textField EmptyText="Puedo desaparecer" [Hidden]="hidden()" />
+    <ext-button Text="Show / hide" (click)="hidden.set(!hidden())" />
+    <ext-textField EmptyText="I can disappear" [Hidden]="hidden()" />
   </div>
 </section>
 
 <section class="example">
   <h3>MaskRe and isValid()</h3>
   <p>
-    Solo acepta letras y números, y es válido con entre 3 y 7 caracteres. La longitud máxima no
-    impide escribir de más: solo invalida el campo.
+    Only letters and numbers are accepted, and the value is valid with 3 to 7 characters. The
+    maximum length does not stop longer text from being typed: it only makes the field invalid.
   </p>
   <div class="example__stage">
     <ext-textField
       #validated
-      FieldLabel="test"
-      EmptyText="Vacio"
+      FieldLabel="Name"
+      EmptyText="Empty"
       MaxLength="7"
       MinLength="3"
       AllowBlank="false"
       MaskRe="([a-zA-Z0-9])"
     />
-    <ext-button Text="Validar" UI="Primary" (click)="check()" />
+    <ext-button Text="Validate" UI="Primary" (click)="check()" />
   </div>
   <p>
-    Resultado: <strong>{{ validation() }}</strong>
+    Result: <strong>{{ validation() }}</strong>
   </p>
 </section>

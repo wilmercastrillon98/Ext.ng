@@ -20,19 +20,19 @@
 <section class="example">
   <h3>Handler</h3>
   <div class="example__stage">
-    <ext-button Text="Ingresar" UI="Primary" [Handler]="login" />
-    <ext-button Text="Limpiar" (click)="message.set('(nada)')" />
+    <ext-button Text="Log in" UI="Primary" [Handler]="login" />
+    <ext-button Text="Clear" (click)="message.set('(nothing)')" />
   </div>
   <p>
-    Resultado: <strong>{{ message() }}</strong>
+    Result: <strong>{{ message() }}</strong>
   </p>
 </section>
 
 <section class="example">
   <h3>Width and Height</h3>
   <div class="example__stage example__stage--outlined">
-    <ext-button Text="Ancho 200" Width="200" />
-    <ext-button Text="Alto 60" UI="Info" Height="60" />
+    <ext-button Text="Width 200" Width="200" />
+    <ext-button Text="Height 60" UI="Info" Height="60" />
   </div>
 </section>
 
@@ -47,14 +47,14 @@
 <section class="example">
   <h3>Disabled</h3>
   <div class="example__stage">
-    <ext-button Text="No se puede usar" UI="Primary" Disabled="true" [Handler]="login" />
+    <ext-button Text="Cannot be used" UI="Primary" Disabled="true" [Handler]="login" />
   </div>
 </section>
 
 <section class="example">
   <h3>Hidden</h3>
   <div class="example__stage">
-    <ext-button Text="Mostrar / ocultar" (click)="hidden.set(!hidden())" />
-    <ext-button Text="Puedo desaparecer" UI="Success" [Hidden]="hidden()" />
+    <ext-button Text="Show / hide" (click)="hidden.set(!hidden())" />
+    <ext-button Text="I can disappear" UI="Success" [Hidden]="hidden()" />
   </div>
 </section>
