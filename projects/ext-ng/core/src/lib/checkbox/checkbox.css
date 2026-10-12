@@ -1,0 +1,28 @@
+.ext-checkbox__body {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+  box-sizing: border-box;
+  min-height: 24px;
+  padding-top: 4px;
+}
+
+.ext-checkbox__input {
+  flex: none;
+  width: 15px;
+  height: 15px;
+  margin: 1px 0 0;
+}
+
+.ext-checkbox__box-label {
+  color: black;
+  font:
+    300 13px / 17px helvetica,
+    arial,
+    verdana,
+    sans-serif;
+}
+
+.ext-checkbox__body--before .ext-checkbox__box-label {
+  order: -1;
+}

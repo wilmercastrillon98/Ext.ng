@@ -1,0 +1,56 @@
+<h2>Checkbox</h2>
+<p>
+  A check box with its label, configured through <code>Checked</code>, <code>BoxLabel</code>,
+  <code>BoxLabelAlign</code>, <code>FieldLabel</code>, <code>LabelAlign</code>,
+  <code>LabelWidth</code>, <code>ReadOnly</code> and <code>Disabled</code>.
+</p>
+
+<section class="example">
+  <h3>Checked</h3>
+  <div class="example__stage">
+    <ext-checkbox />
+    <ext-checkbox Checked="true" />
+  </div>
+</section>
+
+<section class="example">
+  <h3>BoxLabel and BoxLabelAlign</h3>
+  <div class="example__stage">
+    <ext-checkbox BoxLabel="After the box" />
+    <ext-checkbox BoxLabel="Before the box" BoxLabelAlign="Before" />
+  </div>
+</section>
+
+<section class="example">
+  <h3>FieldLabel and LabelAlign</h3>
+  <div class="example__stage">
+    <ext-checkbox FieldLabel="Left" BoxLabel="Label on the left" />
+    <ext-checkbox FieldLabel="Right" LabelAlign="Right" BoxLabel="Label on the right" />
+    <ext-checkbox FieldLabel="Top" LabelAlign="Top" BoxLabel="Label on top" />
+  </div>
+</section>
+
+<section class="example">
+  <h3>Width, LabelWidth and Height</h3>
+  <p>They size the whole component. The box itself always stays 15px square.</p>
+  <div class="example__stage example__stage--outlined">
+    <ext-checkbox FieldLabel="Width 300" Width="300" LabelWidth="80" BoxLabel="Box label" />
+    <ext-checkbox FieldLabel="Height 60" Height="60" BoxLabel="Box label" />
+  </div>
+</section>
+
+<section class="example">
+  <h3>Disabled and ReadOnly</h3>
+  <div class="example__stage">
+    <ext-checkbox FieldLabel="Disabled" Disabled="true" BoxLabel="Cannot be used" />
+    <ext-checkbox FieldLabel="ReadOnly" ReadOnly="true" Checked="true" BoxLabel="Read only" />
+  </div>
+</section>
+
+<section class="example">
+  <h3>Hidden</h3>
+  <div class="example__stage">
+    <ext-button Text="Show / hide" (click)="hidden.set(!hidden())" />
+    <ext-checkbox BoxLabel="I can disappear" [Hidden]="hidden()" />
+  </div>
+</section>

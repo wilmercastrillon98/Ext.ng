@@ -2,15 +2,17 @@ import { Type } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ExtNumberField } from '../number-field/number-field';
 import { ExtTextField } from '../text-field/text-field';
-import { Field } from './field';
+import { TextFieldBase } from './text-field-base';
 
-const fields: [string, Type<Field>][] = [
+const fields: [string, Type<TextFieldBase>][] = [
   ['ExtTextField', ExtTextField],
   ['ExtNumberField', ExtNumberField],
 ];
 
 describe.each(fields)('Field on %s', (_name, field) => {
-  async function render(inputs: Record<string, unknown> = {}): Promise<ComponentFixture<Field>> {
+  async function render(
+    inputs: Record<string, unknown> = {},
+  ): Promise<ComponentFixture<TextFieldBase>> {
     const fixture = TestBed.createComponent(field);
     for (const [name, value] of Object.entries(inputs)) {
       fixture.componentRef.setInput(name, value);
@@ -20,22 +22,22 @@ describe.each(fields)('Field on %s', (_name, field) => {
     return fixture;
   }
 
-  async function type(fixture: ComponentFixture<Field>, text: string): Promise<void> {
+  async function type(fixture: ComponentFixture<TextFieldBase>, text: string): Promise<void> {
     const input = inputOf(fixture);
     input.value = text;
     input.dispatchEvent(new Event('input'));
     await fixture.whenStable();
   }
 
-  function hostOf(fixture: ComponentFixture<Field>): HTMLElement {
+  function hostOf(fixture: ComponentFixture<TextFieldBase>): HTMLElement {
     return fixture.nativeElement as HTMLElement;
   }
 
-  function inputOf(fixture: ComponentFixture<Field>): HTMLInputElement {
+  function inputOf(fixture: ComponentFixture<TextFieldBase>): HTMLInputElement {
     return fixture.nativeElement.querySelector('input') as HTMLInputElement;
   }
 
-  function labelOf(fixture: ComponentFixture<Field>): HTMLLabelElement | null {
+  function labelOf(fixture: ComponentFixture<TextFieldBase>): HTMLLabelElement | null {
     return fixture.nativeElement.querySelector('label');
   }
 

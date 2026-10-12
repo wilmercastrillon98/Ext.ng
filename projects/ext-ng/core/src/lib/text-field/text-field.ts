@@ -1,12 +1,12 @@
 import { Component, computed, input } from '@angular/core';
-import { Field } from '../field/field';
+import { TextFieldBase } from '../field/text-field-base';
 
 @Component({
   selector: 'ext-textField',
   styleUrls: ['../field/field.css', './text-field.css'],
   templateUrl: './text-field.html',
 })
-export class ExtTextField extends Field {
+export class ExtTextField extends TextFieldBase {
   /** Expression every single character has to match. Others are dropped as they are typed. */
   readonly MaskRe = input('');
 

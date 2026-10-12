@@ -8,14 +8,14 @@ import {
   viewChild,
 } from '@angular/core';
 import { numericAttribute } from '../attributes';
-import { Field } from '../field/field';
+import { TextFieldBase } from '../field/text-field-base';
 
 @Component({
   selector: 'ext-numberField',
   styleUrls: ['../field/field.css', './number-field.css'],
   templateUrl: './number-field.html',
 })
-export class ExtNumberField extends Field {
+export class ExtNumberField extends TextFieldBase {
   /** Whether the value can be typed. The spinner keeps working either way. */
   readonly Editable = input(true, { transform: booleanAttribute });
   /** Smallest accepted value. The spinner never steps below it. Validation only while typing. */

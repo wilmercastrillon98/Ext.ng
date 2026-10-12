@@ -10,6 +10,11 @@ export const demos: DemoRoute[] = [
     loadComponent: () => import('./demos/button/button-demo').then((m) => m.ButtonDemo),
   },
   {
+    path: 'checkbox',
+    label: 'Checkbox',
+    loadComponent: () => import('./demos/checkbox/checkbox-demo').then((m) => m.CheckboxDemo),
+  },
+  {
     path: 'label',
     label: 'Label',
     loadComponent: () => import('./demos/label/label-demo').then((m) => m.LabelDemo),

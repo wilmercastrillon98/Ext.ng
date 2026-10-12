@@ -1,0 +1,22 @@
+@if (showLabel()) {
+  <label class="ext-field__label" [for]="inputId" [style.width.px]="labelWidth()">
+    {{ FieldLabel() }}
+  </label>
+}
+
+<div class="ext-checkbox__body" [class.ext-checkbox__body--before]="BoxLabelAlign() === 'Before'">
+  <input
+    type="checkbox"
+    class="ext-checkbox__input"
+    [id]="inputId"
+    [checked]="checked()"
+    [disabled]="Disabled()"
+    [attr.aria-readonly]="ReadOnly() || null"
+    (click)="onClick($event)"
+    (change)="onChange($event)"
+  />
+
+  @if (showBoxLabel()) {
+    <label class="ext-checkbox__box-label" [for]="inputId">{{ BoxLabel() }}</label>
+  }
+</div>
